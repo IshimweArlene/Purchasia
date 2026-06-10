@@ -18,7 +18,9 @@ public class ProductResponse {
     private String description;
     private BigDecimal price;
     private Integer stock;
+    private String category;
     private String imageUrl;
+    private UUID sellerId;
     private String sellerName;
     private LocalDateTime createdAt;
 }

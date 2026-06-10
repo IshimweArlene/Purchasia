@@ -44,7 +44,7 @@ public class AuthService {
         // Generate a token immediately so the user is logged in after registering
         String token = jwtUtil.generateToken(user);
 
-        return new AuthResponse(token, user.getRole().name(), user.getName());
+        return new AuthResponse(token, user.getRole().name(), user.getName(), user.getEmail(), user.getId());
     }
 
     // ── Login ────────────────────────────────────────────
@@ -65,6 +65,6 @@ public class AuthService {
 
         String token = jwtUtil.generateToken(user);
 
-        return new AuthResponse(token, user.getRole().name(), user.getName());
+        return new AuthResponse(token, user.getRole().name(), user.getName(), user.getEmail(), user.getId());
     }
 }

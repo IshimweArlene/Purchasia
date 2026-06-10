@@ -21,6 +21,7 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
@@ -29,6 +30,10 @@ public class Product {
     @Column(nullable = false)
     private Integer stock;
 
+    @Column
+    private String category;
+
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)

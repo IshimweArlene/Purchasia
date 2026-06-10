@@ -39,7 +39,9 @@ public class ProductService {
                 product.getDescription(),
                 product.getPrice(),
                 product.getStock(),
+                product.getCategory(),
                 product.getImageUrl(),
+                product.getSeller().getId(),
                 product.getSeller().getName(),
                 product.getCreatedAt()
         );
@@ -71,6 +73,7 @@ public class ProductService {
                 .description(request.getDescription())
                 .price(request.getPrice())
                 .stock(request.getStock())
+                .category(request.getCategory())
                 .imageUrl(request.getImageUrl())
                 .build();
 
@@ -92,6 +95,7 @@ public class ProductService {
         product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
         product.setStock(request.getStock());
+        product.setCategory(request.getCategory());
         product.setImageUrl(request.getImageUrl());
 
         return toResponse(productRepository.save(product));
