@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.ProductRequest;
 import com.example.demo.dto.ProductResponse;
+import com.example.demo.scheduler.StockScheduler;
 import com.example.demo.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.UUID;
 public class SellerProductController {
 
     private final ProductService productService;
+    private final StockScheduler stockScheduler;
 
     // GET /api/seller/products — seller sees only their products
     @GetMapping
@@ -47,5 +49,11 @@ public class SellerProductController {
     public ResponseEntity<Void> deleteProduct(@PathVariable UUID id) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
+    }
+    // POST /api/seller/stock-check — manually trigger stock check
+    @PostMapping("/stock-check")
+    public ResponseEntity<String> triggerStockCheck() {
+        stockScheduler.checkLowStock();
+        return ResponseEntity.ok("Stock check triggered — check your application logs");
     }
 }

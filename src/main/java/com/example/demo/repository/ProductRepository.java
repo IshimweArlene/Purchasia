@@ -14,4 +14,5 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 
     // Seller checks if a product belongs to them before editing/deleting
     boolean existsByIdAndSeller(UUID id, User seller);
+    List<Product> findByStockLessThanEqual(int threshold);
 }
